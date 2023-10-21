@@ -1,0 +1,51 @@
+@import 'src/app/shared/styles/global';
+
+:host {
+  text-align: center;
+  position: relative;
+
+  &:not(.node_root):nth-child(1)::after,
+  &:not(.node_root):nth-child(2)::after,
+  &:nth-child(1)::before,
+  &:nth-child(2)::before {
+    position: absolute;
+    background-color: #000;
+    content: '';
+    z-index: 1;
+  }
+
+  &:not(.node_root):nth-child(1)::after,
+  &:not(.node_root):nth-child(2)::after {
+    top: 0;
+    height: 1px;
+    width: 50%;
+  }
+
+  &:nth-child(2)::after {
+    margin-left: -50%;
+  }
+
+  &:nth-child(1)::before,
+  &:nth-child(2)::before {
+    top: 0;
+    left: 50%;
+    height: $nodeVerticalMargin * 4 + 18px;
+    width: 1px;
+  }
+
+  &.node_root:nth-child(1)::before,
+  &.node_no-children:nth-child(1)::before,
+  &.node_no-children:nth-child(2)::before {
+    height: $nodeVerticalMargin;
+  }
+
+  &.node_root:nth-child(1)::before {
+    top: $nodeVerticalMargin * 2 + 8px;
+  }
+
+  &.node_root:nth-child(1)::before {
+    top: $nodeVerticalMargin + 1px;
+    left: $nodeVerticalMargin * 1.5;
+  }
+
+}

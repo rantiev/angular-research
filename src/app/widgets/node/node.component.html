@@ -1,0 +1,10 @@
+<div class="node__name" (click)="onClick($event)">{{node.name}} <br> {{!!node.cdPushMode}} <br>
+  {{!!node.detached}}</div>
+<div class="node__children">
+  <ng-container *ngFor="let node of node.children">
+    <node-renderer [node]="node"
+                   [doToggleCDMode]="doToggleCDMode"
+                   [doDetachAttach]="doDetachAttach"
+                   [ngClass]="{'node_no-children' : node.children.length === 0}"/>
+  </ng-container>
+</div>

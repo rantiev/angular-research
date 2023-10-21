@@ -1,0 +1,31 @@
+@import 'src/app/shared/styles/global';
+
+:host {
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+
+.vis__name {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: $nodeVerticalMargin 4px;
+  border: 1px solid black;
+  background-color: darkolivegreen;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 200ms ease-in-out 50ms;
+}
+
+.vis__children > div {
+  display: flex;
+  justify-content: center;
+}
+
+.vis_on-push-detection {
+  background-color: darkslateblue;
+}

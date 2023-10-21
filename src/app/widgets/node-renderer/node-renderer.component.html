@@ -1,0 +1,15 @@
+<ng-container [ngSwitch]="node.cdPushMode">
+  <node
+    *ngSwitchCase="false"
+    [node]="node"
+    [doToggleCDMode]="doToggleCDMode"
+    [doDetachAttach]="doDetachAttach"
+  />
+  <node-on-push
+    *ngSwitchCase="true"
+    [node]="node"
+    [doToggleCDMode]="doToggleCDMode"
+    [doDetachAttach]="doDetachAttach"
+    class="node_on-push-detection"
+  />
+</ng-container>

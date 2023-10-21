@@ -1,0 +1,6 @@
+<div class="vis" [ngClass]="{'vis_on-push-detection': onPushDetection}">
+  <div class="vis__name" #boxEl (click)="onClick()"><ng-content
+    select="[slotName]"></ng-content></div>
+  <!--<div>Clicked {{clickTimes}} times</div>-->
+  <div class="vis__children"><ng-content select="[slotChildren]"></ng-content></div>
+</div>

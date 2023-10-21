@@ -1,0 +1,17 @@
+<h2>Here is default change detection</h2>
+<p>Purple items are ones who uses change detection on push strategy</p>
+<p>Black items are detached</p>
+<p><label><input type="checkbox" [(ngModel)]="changeOnPush" /> Toggle change detection mode
+  default/onPush on click - {{!!changeOnPush}}</label></p>
+<p>
+  <label><input type="checkbox" [(ngModel)]="detachAttach" /> Detach/Attach on click -
+    {{!!detachAttach}}</label>
+</p>
+<div class="nodes">
+  <node-renderer
+    [node]="tree"
+    [doToggleCDMode]="changeOnPush"
+    [doDetachAttach]="detachAttach"
+    class="node_root"
+  />
+</div>

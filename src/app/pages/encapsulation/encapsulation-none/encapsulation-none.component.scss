@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  padding: 20px;
+}
+
+p {
+  border: 4px solid darkblue;
+}
+
+:host .p2 {
+  border: 4px solid violet;
+}
+
+.p3 {
+  border: 4px solid blue;
+}
+
+:host-context(.encapsulation-check) .p4 {
+  border: 4px solid black;
+}
+
+::ng-deep .p5 {
+  border: 4px solid gray;
+}
+

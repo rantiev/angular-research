@@ -5,9 +5,9 @@
   position: relative;
 
   &:not(.node_root):nth-child(1)::after,
-  &:not(.node_root):nth-child(2)::after,
+  &:not(.node_root)p1::after,
   &:nth-child(1)::before,
-  &:nth-child(2)::before {
+  &p1::before {
     position: absolute;
     background-color: #000;
     content: '';
@@ -15,18 +15,18 @@
   }
 
   &:not(.node_root):nth-child(1)::after,
-  &:not(.node_root):nth-child(2)::after {
+  &:not(.node_root)p1::after {
     top: 0;
     height: 1px;
     width: 50%;
   }
 
-  &:nth-child(2)::after {
+  &p1::after {
     margin-left: -50%;
   }
 
   &:nth-child(1)::before,
-  &:nth-child(2)::before {
+  &p1::before {
     top: 0;
     left: 50%;
     height: $nodeVerticalMargin * 4 + 18px;
@@ -35,7 +35,7 @@
 
   &.node_root:nth-child(1)::before,
   &.node_no-children:nth-child(1)::before,
-  &.node_no-children:nth-child(2)::before {
+  &.node_no-childrenp1::before {
     height: $nodeVerticalMargin;
   }
 

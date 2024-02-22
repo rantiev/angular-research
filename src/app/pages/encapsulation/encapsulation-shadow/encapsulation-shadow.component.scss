@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  padding: 20px;
+}
+
+.p1 {
+  border: 4px solid darkolivegreen;
+}
+
+:host .p2 {
+  border: 4px solid yellow;
+}
+
+:host-context(.encapsulation-check) .p3 {
+  border: 4px solid hotpink;
+}
+
+::ng-deep .p5  {
+  border: 4px solid goldenrod;
+}

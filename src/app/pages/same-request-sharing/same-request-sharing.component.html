@@ -1,0 +1,10 @@
+<input type="text" [ngModel]="searchValue" (keyup)="onKeyUp($event)" />
+
+<same-request-sharing-c1 />
+<same-request-sharing-c2 />
+
+<h2>Async 1</h2>
+<p>{{ data$ | async }}</p>
+
+<h2>Async 2</h2>
+<p>{{ data$ | async }}</p>

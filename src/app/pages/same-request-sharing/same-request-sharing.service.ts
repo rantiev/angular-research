@@ -1,32 +1,58 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  BehaviorSubject,
   debounceTime,
   distinctUntilChanged,
   map,
-  mergeMap,
-  concatMap,
   share,
-  switchMap
+  switchMap, catchError, of, Subscription, Subject, Observable
 } from 'rxjs';
+
+const apiUrl = 'http://localhost:3333'
 
 @Injectable()
 export class SameRequestSharingService {
-  searchParams$ = new BehaviorSubject('rantiev');
+  subscriptions = new Subscription();
+  searchParams$ = new Subject<number>();
+  paramsSource$ = new Subject<number>();
+
   data$ = this.searchParams$.pipe(
     debounceTime(300),
     distinctUntilChanged(),
-    switchMap(s => {
-    //mergeMap(s => {
-    //concatMap(s => {
-      return this.http.get(`https://api.github.com/users/${s}/repos`);
+    switchMap(t => {
+      return this.http.get(`${apiUrl}/data/${t}`);
     }),
-    map((res: any[]) => {
-      return res.map(r => r.name).join(', ');
+    catchError(err => {
+      return of([{ name: 'Error catched not to cancel Observable' }]);
+    }),
+    map((res: any) => {
+      return res.message;
+    }),
+    share(),
+  )
+  dataThroughParams$ = this.paramsSource$.pipe(
+    switchMap(t => {
+      return this.http.get(`${apiUrl}/data/${t}`);
+    }),
+    catchError(err => {
+      return of([{ name: 'Error catched not to cancel Observable' }]);
+    }),
+    map((res: any) => {
+      return res.message;
     }),
     share(),
   )
 
   constructor(private http: HttpClient) {}
+
+  loadData(t): Observable<{ message: string }> {
+    this.subscriptions.unsubscribe();
+
+    const request = this.http.get<{ message: string }>(`${apiUrl}/data/${t}`);
+    const subscription = request.subscribe();
+
+    this.subscriptions = subscription;
+
+    return request;
+  }
 }

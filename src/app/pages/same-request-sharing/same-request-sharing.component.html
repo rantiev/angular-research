@@ -1,10 +1,26 @@
+<h2>Load on search</h2>
 <input type="text" [ngModel]="searchValue" (keyup)="onKeyUp($event)" />
+
+<div>
+  <h2>Load by click</h2>
+  <button (click)="loadData(2000)">Load in 2000ms</button>
+  <button (click)="loadData(4000)">Load in 4000ms</button>
+</div>
+
+<div>
+  <h2>Load by click via params Observing</h2>
+  <button (click)="loadDataViaParamsSource(2000)">Load in 2000ms</button>
+  <button (click)="loadDataViaParamsSource(4000)">Load in 4000ms</button>
+</div>
+
 
 <same-request-sharing-c1 />
 <same-request-sharing-c2 />
 
-<h2>Async 1</h2>
-<p>{{ data$ | async }}</p>
+<h2>Create subscription on click</h2>
+<p *ngIf="dataSubscriptionInTemplate$ | async as res">{{ res.message }}</p>
+<p *ngIf="dataSubscriptionInTemplate$ | async as res">{{ res.message }}</p>
 
-<h2>Async 2</h2>
-<p>{{ data$ | async }}</p>
+<h2>Subscription created before click</h2>
+<p>{{ dataThroughParams$ | async }}</p>
+<p>{{ dataThroughParams$ | async }}</p>
